@@ -5,6 +5,8 @@
 
 #include <gf2/core/ResourceBundle.h>
 
+#include <gf2/graphics/Text.h>
+
 namespace gft {
   class Game;
 
@@ -13,6 +15,9 @@ namespace gft {
 
     gf::ResourceBundle bundle(Game* game) const;
 
+    // resources
+
+    gf::TextResource main_title_text;
   };
 
 }

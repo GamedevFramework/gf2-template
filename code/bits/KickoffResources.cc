@@ -3,6 +3,7 @@
 
 #include "KickoffResources.h"
 
+#include <gf2/core/Color.h>
 #include <gf2/framework/BundleBuilder.h>
 
 #include "Game.h"
@@ -11,12 +12,18 @@ namespace gft {
 
   KickoffResources::KickoffResources()
   {
+    main_title_text.font = "game/Oxanium-Regular.ttf";
+    main_title_text.data.content = "Game 3000";
+    main_title_text.data.color = gf::Yellow;
+    main_title_text.data.character_size = 128.0f;
 
   }
 
   gf::ResourceBundle KickoffResources::bundle(Game* game) const
   {
     gf::BundleBuilder builder(game);
+
+    builder.add_in_bundle(main_title_text);
 
     return builder.make_bundle();
   }

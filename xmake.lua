@@ -28,7 +28,7 @@ if is_plat("windows") then
 end
 
 set_configdir("$(builddir)/config")
-set_configvar("GAME_DATADIR", "$(projectdir)/data/game")
+set_configvar("GAME_DATADIR", "$(projectdir)/data")
 add_configfiles("code/config.h.in", {pattern = "@(.-)@"})
 
 target("game")

@@ -5,6 +5,9 @@
 
 #include <gf2/graphics/Scene.h>
 
+#include <gf2/graphics/TextEntity.h>
+#include <gf2/graphics/FontAtlas.h>
+
 #include "KickoffResources.h"
 
 namespace gft {
@@ -15,7 +18,9 @@ namespace gft {
     KickoffMenuScene(Game* game, const KickoffResources& resources);
 
   private:
+    gf::FontAtlas m_atlas;
 
+    gf::TextEntity m_main_title_text;
   };
 
 }
