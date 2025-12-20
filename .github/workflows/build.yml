@@ -78,5 +78,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: game-snapshot
-          path: ${{github.workspace}}/gf2-template/build/pack/${{ matrix.configurations.plat }}-${{ matrix.configurations.kind }}-${{ matrix.configurations.mode }}/*  # TODO: change the name of the directory
+          path: ${{github.workspace}}/build/pack/${{ matrix.configurations.plat }}-${{ matrix.configurations.kind }}-${{ matrix.configurations.mode }}/*
           if-no-files-found: error
