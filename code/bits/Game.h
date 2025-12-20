@@ -9,6 +9,7 @@
 #include "KickoffAct.h"
 #include "KickoffResources.h"
 #include "WorldAct.h"
+#include "WorldModel.h"
 #include "WorldResources.h"
 
 namespace gft {
@@ -16,6 +17,26 @@ namespace gft {
   class Game : public gf::SceneSystem {
   public:
     Game(const std::filesystem::path& asset_directory);
+
+    WorldModel* world_model()
+    {
+      return &m_world_model;
+    }
+
+    WorldData* world_data()
+    {
+      return &m_world_model.data;
+    }
+
+    WorldState* world_state()
+    {
+      return &m_world_model.state;
+    }
+
+    WorldAct* world_act()
+    {
+      return m_world_act.get();
+    }
 
     void load_world();
     bool world_loaded();
@@ -26,6 +47,7 @@ namespace gft {
     std::unique_ptr<KickoffAct> m_kickoff_act;
 
     gf::RenderAsync m_async;
+    WorldModel m_world_model;
     WorldResources m_world_resources;
     std::unique_ptr<WorldAct> m_world_act;
   };

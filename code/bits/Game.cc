@@ -19,6 +19,8 @@ namespace gft {
   void Game::load_world()
   {
     m_async.run_async([&]() {
+      m_world_model.state.bind(m_world_model.data);
+
       gf::ResourceBundle world_bundle = m_world_resources.bundle(this);
       world_bundle.load_from(resource_manager());
 
