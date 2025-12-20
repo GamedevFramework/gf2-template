@@ -74,3 +74,9 @@ jobs:
 
       - name: Pack
         run: xmake pack --yes -o "build/pack/${{ matrix.configurations.plat }}-${{ matrix.configurations.kind }}-${{ matrix.configurations.mode }}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: game-snapshot
+          path: ${{github.workspace}}/gf2-template/build/pack/${{ matrix.configurations.plat }}-${{ matrix.configurations.kind }}-${{ matrix.configurations.mode }}/*  # TODO: change the name of the directory
+          if-no-files-found: error
