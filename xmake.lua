@@ -1,3 +1,5 @@
+-- SPDX-License-Identifier: GPL-3.0-or-later
+-- Copyright (c) 2025 Julien Bernard
 set_project("game")
 set_version("1.0.0")
 
