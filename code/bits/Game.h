@@ -4,9 +4,12 @@
 #include <memory>
 
 #include <gf2/framework/SceneSystem.h>
+#include <gf2/graphics/RenderAsync.h>
 
 #include "KickoffAct.h"
 #include "KickoffResources.h"
+#include "WorldAct.h"
+#include "WorldResources.h"
 
 namespace gft {
 
@@ -14,9 +17,17 @@ namespace gft {
   public:
     Game(const std::filesystem::path& asset_directory);
 
+    void load_world();
+    bool world_loaded();
+    void start_world();
+
   private:
     KickoffResources m_kickoff_resources;
     std::unique_ptr<KickoffAct> m_kickoff_act;
+
+    gf::RenderAsync m_async;
+    WorldResources m_world_resources;
+    std::unique_ptr<WorldAct> m_world_act;
   };
 
 }

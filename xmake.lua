@@ -28,7 +28,7 @@ if is_plat("windows") then
 end
 
 set_configdir("$(builddir)/config")
-set_configvar("GAME_DATADIR", "$(projectdir)/data")
+set_configvar("GAME_DATADIR", "$(projectdir)/data/game")
 add_configfiles("code/config.h.in", {pattern = "@(.-)@"})
 
 target("game")
@@ -37,4 +37,4 @@ target("game")
     add_files("code/bits/*.cc")
     add_includedirs("$(builddir)/config")
     add_packages("gamedevframework2")
-    set_rundir("$(projectdir)/data")
+    set_rundir("$(projectdir)/data/game")
