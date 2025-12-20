@@ -10,6 +10,8 @@ add_requires("gamedevframework2")
 add_rules("mode.debug", "mode.releasedbg", "mode.release")
 add_rules("plugin.compile_commands.autoupdate", {outputdir = "$(builddir)"})
 
+includes("@builtin/xpack")
+
 if is_mode("sanitizers") then
     set_symbols("debug")
     set_optimize("none")
@@ -28,7 +30,7 @@ if is_plat("windows") then
 end
 
 set_configdir("$(builddir)/config")
-set_configvar("GAME_DATADIR", "$(projectdir)/data/game")
+set_configvar("GAME_DATADIR", "$(projectdir)/data")
 add_configfiles("code/config.h.in", {pattern = "@(.-)@"})
 
 target("game")
@@ -37,4 +39,26 @@ target("game")
     add_files("code/bits/*.cc")
     add_includedirs("$(builddir)/config")
     add_packages("gamedevframework2")
-    set_rundir("$(projectdir)/data/game")
+    set_rundir("$(projectdir)/data")
+
+xpack("game")
+     set_formats("nsis", "zip", "targz")
+     set_title("game")
+     set_author("team")
+     set_description("Game 3000")
+     set_homepage("https://example.com")
+     set_licensefile("LICENSE")
+     add_targets("game")
+     set_bindir(".")
+     add_installfiles("(data/*)")
+--      add_sourcefiles("(src/**)")
+--      set_iconfile("src/assets/xmake.ico")
+
+     after_installcmd(function (package, batchcmds)
+         batchcmds:mkdir(package:installdir("data"))
+         batchcmds:cp("data/*", package:installdir("data"))
+     end)
+
+     after_uninstallcmd(function (package, batchcmds)
+         batchcmds:rmdir(package:installdir("data"))
+     end)
