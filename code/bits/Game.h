@@ -18,6 +18,11 @@ namespace gft {
   public:
     Game(const std::filesystem::path& asset_directory);
 
+    KickoffAct* kickoff_act()
+    {
+      return m_kickoff_act.get();
+    }
+
     WorldModel* world_model()
     {
       return &m_world_model;

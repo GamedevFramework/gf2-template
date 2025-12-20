@@ -18,6 +18,7 @@ namespace gft {
     // resources
 
     gf::TextResource main_title_text;
+    gf::TextResource loading_text;
   };
 
 }

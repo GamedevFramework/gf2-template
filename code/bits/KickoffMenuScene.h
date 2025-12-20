@@ -5,6 +5,7 @@
 
 #include <gf2/graphics/Scene.h>
 
+#include <gf2/core/ActionGroup.h>
 #include <gf2/graphics/TextEntity.h>
 #include <gf2/graphics/FontAtlas.h>
 
@@ -18,6 +19,15 @@ namespace gft {
     KickoffMenuScene(Game* game, const KickoffResources& resources);
 
   private:
+    static gf::ActionGroupSettings compute_settings();
+
+    void do_process_event(const gf::Event& event) override;
+    void do_handle_actions() override;
+
+    Game* m_game;
+
+    gf::ActionGroup m_action_group;
+
     gf::FontAtlas m_atlas;
 
     gf::TextEntity m_main_title_text;

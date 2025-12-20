@@ -3,6 +3,7 @@
 #ifndef GFT_KICKOFF_ACT_H
 #define GFT_KICKOFF_ACT_H
 
+#include "KickoffLoadingScene.h"
 #include "KickoffMenuScene.h"
 #include "KickoffResources.h"
 
@@ -13,6 +14,7 @@ namespace gft {
     KickoffAct(Game* game, const KickoffResources& resources);
 
     KickoffMenuScene menu_scene;
+    KickoffLoadingScene loading_scene;
 
   };
 

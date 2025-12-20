@@ -2,6 +2,8 @@
 // Copyright (c) 2025 Julien Bernard
 #include "Game.h"
 
+#include <thread>
+
 namespace gft {
 
   Game::Game(const std::filesystem::path& asset_directory)
@@ -18,6 +20,8 @@ namespace gft {
 
   void Game::load_world()
   {
+    using namespace std::literals;
+
     m_async.run_async([&]() {
       m_world_model.state.bind(m_world_model.data);
 
@@ -25,6 +29,8 @@ namespace gft {
       world_bundle.load_from(resource_manager());
 
       m_world_act = std::make_unique<WorldAct>(this, m_world_resources);
+
+      std::this_thread::sleep_for(1s); // TODO: remove
     });
   }
 
