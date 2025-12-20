@@ -1,0 +1,10 @@
+#ifndef GAME_CONFIG_H
+#define GAME_CONFIG_H
+
+#include <string_view>
+
+namespace gft {
+  constexpr std::string_view GameDataDirectory =  R"(@GAME_DATADIR@)";
+}
+
+#endif // GAME_CONFIG_H
