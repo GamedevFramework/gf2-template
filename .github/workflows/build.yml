@@ -42,7 +42,7 @@ jobs:
         uses: xmake-io/github-action-setup-xmake@v1
         with:
           actions-cache-folder: '.xmake-cache'
-          actions-cache-key: ${{ matrix.configurations.name }}-${{ matrix.configurations.arch }}
+          actions-cache-key: ${{ matrix.configurations.name }}-${{ matrix.configurations.arch }}-${{ matrix.configurations.kind }}
 
       - name: Update xmake repository
         run: xmake repo --update
