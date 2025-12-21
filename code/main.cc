@@ -2,10 +2,8 @@
 // Copyright (c) 2025 Julien Bernard
 #include "bits/Game.h"
 
-#include "config.h"
-
 int main()
 {
-  gft::Game game(gft::GameDataDirectory);
+  gft::Game game(std::filesystem::current_path());
   return game.run();
 }

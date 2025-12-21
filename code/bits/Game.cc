@@ -2,7 +2,12 @@
 // Copyright (c) 2025 Julien Bernard
 #include "Game.h"
 
+#include <filesystem>
 #include <thread>
+
+#include <gf2/graphics/GamePaths.h>
+
+#include "config.h"
 
 namespace gft {
 
@@ -10,6 +15,11 @@ namespace gft {
   : gf::SceneSystem("Game", { 1600, 900 }, asset_directory)
   , m_async(render_manager())
   {
+#ifdef SDL_PLATFORM_LINUX
+    resource_manager()->add_search_directory(gft::GameDataDirectory);
+#endif
+    resource_manager()->add_search_directory(gf::application_base_path());
+
     gf::ResourceBundle kickoff_bundle = m_kickoff_resources.bundle(this);
     kickoff_bundle.load_from(resource_manager());
 
