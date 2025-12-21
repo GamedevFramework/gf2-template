@@ -6,6 +6,10 @@ set_version("1.0.0")
 add_repositories("gf-repo https://github.com/GamedevFramework/xmake-repo")
 
 add_requires("gamedevframework2")
+if is_kind("static") then
+    add_requireconfs("gamedevframework2", {system = false, configs = {shared = false}})
+    add_requireconfs("gamedevframework2.**", {system = false, configs = {shared = false}})
+end
 
 add_rules("mode.debug", "mode.releasedbg", "mode.release")
 add_rules("plugin.compile_commands.autoupdate", {outputdir = "$(builddir)"})
