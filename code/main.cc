@@ -4,6 +4,6 @@
 
 int main()
 {
-  gft::Game game(std::filesystem::current_path());
+  gft::Game game(std::filesystem::current_path() / "data");
   return game.run();
 }

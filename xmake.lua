@@ -44,7 +44,7 @@ target("game")
     add_files("code/bits/*.cc")
     add_includedirs("$(builddir)/config")
     add_packages("gamedevframework2")
-    set_rundir("$(projectdir)/data")
+    set_rundir("$(projectdir)")
 
 xpack("game")
     set_formats("nsis", "zip", "targz")
