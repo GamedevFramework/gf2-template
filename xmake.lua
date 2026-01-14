@@ -45,6 +45,14 @@ target("game")
     add_includedirs("$(builddir)/config")
     add_packages("gamedevframework2")
     set_rundir("$(projectdir)")
+    if is_plat("windows") then
+        add_files("app.manifest")
+        if is_mode("release") then
+            add_ldflags("/subsystem:windows")
+        else
+            add_ldflags("/subsystem:console")
+        end
+    end
 
 xpack("game")
     set_formats("nsis", "zip", "targz")
